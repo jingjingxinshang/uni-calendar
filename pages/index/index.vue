@@ -1,24 +1,34 @@
 <template>
 	<view class="">
-		{{multiIndex}}
-		<picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" :value="multiIndex" @change="pickerChange"
-			class="picker-view">
-			<picker-view-column>
-				<view class="item" v-for="(item,index) in array" :key="index">{{item.name}}({{item.nongName}})</view>
-			</picker-view-column>
-			<picker-view-column>
-				<view class="item" v-for="(item,index) in array[multiIndex[0]]?.children" :key="index">{{item.name}}({{item.nongName}})</view>
-			</picker-view-column>
-			<picker-view-column>
-				<view class="item" v-for="(item,index) in array[multiIndex[0]]?.children[multiIndex[1]]?.children" :key="index">{{item.name}}({{item.nongName}})</view>
-			</picker-view-column>
-		</picker-view>
+    <view @click="openPopup">
+      {{multiIndex}}
+    </view>
+		<calendars></calendars>
+		<view class="">
+			<!-- <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" :value="multiIndex" @change="pickerChange"
+				class="picker-view">
+				<picker-view-column>
+					<view class="item" v-for="(item,index) in array" :key="index">{{item.name}}({{item.nongName}})</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="item" v-for="(item,index) in array[multiIndex[0]]?.children" :key="index">{{item.name}}({{item.nongName}})</view>
+				</picker-view-column>
+				<picker-view-column>
+					<view class="item" v-for="(item,index) in array[multiIndex[0]]?.children[multiIndex[1]]?.children" :key="index">{{item.name}}({{item.nongName}})</view>
+				</picker-view-column>
+			</picker-view> -->
+		</view>
+		
 	</view>
 </template>
 
 <script>
 	import calendar from './gong2nong.js'
+	import calendars from './calendar.vue'
 	export default {
+		components: {
+			calendars
+		},
 		data() {
 			return {
 				title: 'Hello',
@@ -30,16 +40,16 @@
 			}
 		},
 		onLoad() {
-			
+
 		},
 		onShow() {
-			this.initDate()
-			this.initMultiArray()
-			console.log(calendar.solar2lunar(2020))
+			// this.initDate()
+			// this.initMultiArray()
+			// console.log(calendar.solar2lunar(2020))
 		},
 		computed: {
 			multiArray() {
-				return this.array 
+				return this.array
 			}
 		},
 		methods: {
@@ -58,7 +68,7 @@
 				// for (const a of this.array) {
 				// 	one.push(a.name)
 				// }
-				// this.multiArray[0] = 
+				// this.multiArray[0] =
 			},
 			initDate() {
 				const date = new Date()
