@@ -1,9 +1,9 @@
 <template>
 	<view class="">
     <view @click="openPopup">
-      {{multiIndex}}
+      {{currentDate}}
     </view>
-		<calendars></calendars>
+		<calendars @popupSubmit="popupSubmit"></calendars>
 		<view class="">
 			<!-- <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" :value="multiIndex" @change="pickerChange"
 				class="picker-view">
@@ -36,7 +36,8 @@
 				array: [],
 				multiArrayYear: [],
 				multiArrayMouth: [],
-				multiArrayDay: []
+				multiArrayDay: [],
+				currentDate: ''
 			}
 		},
 		onLoad() {
@@ -53,6 +54,10 @@
 			}
 		},
 		methods: {
+			popupSubmit(arrayIndex,data) {
+				this.multiIndex = [...arrayIndex]
+				this.currentDate = data.year + '年' + data.month + '月' + data.day + '日'
+			},
 			pickerChange(e) {
 				console.log('触发', e, this.multiIndex)
 				const val = e.detail.value
