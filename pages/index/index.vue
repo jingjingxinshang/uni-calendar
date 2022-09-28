@@ -1,9 +1,9 @@
 <template>
 	<view class="">
-    <view @click="openPopup">
-      
-    </view>
 		<calendars @popupSubmit="popupSubmit"></calendars>
+
+		v2:
+		<calendarsV2 @popupSubmit="popupSubmit"></calendarsV2>
 		<view class="">
 			选择时间为：{{currentDate}}
 			<!-- <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" :value="multiIndex" @change="pickerChange"
@@ -19,16 +19,18 @@
 				</picker-view-column>
 			</picker-view> -->
 		</view>
-		
+
 	</view>
 </template>
 
 <script>
 	import calendar from './gong2nong.js'
 	import calendars from './calendar.vue'
+	import calendarsV2 from './calendarV2.vue'
 	export default {
 		components: {
-			calendars
+			calendars,
+			calendarsV2,
 		},
 		data() {
 			return {

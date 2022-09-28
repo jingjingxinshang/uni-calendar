@@ -2,7 +2,7 @@
 	<view>
 		<view>当前时间：{{currentYear}}年{{currentMonth}}月{{currentDay}}日</view>
 		<br>
-		<view @click="popupClick">{{currentDate.year}}年{{currentDate.month}}月-打开选择</view>
+		<view @click="popupClick">{{currentDate?.year}}年{{currentDate?.month}}月-打开选择</view>
 		<uni-popup ref="popup" type="center">
 			<view style="width: 700rpx;height: 800rpx;background-color: #fff;">
 				<picker-view indicator-style="height: 50px;" style="width: 100%; height: 600rpx;text-align: center;"
