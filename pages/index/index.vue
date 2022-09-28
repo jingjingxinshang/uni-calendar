@@ -1,10 +1,11 @@
 <template>
 	<view class="">
     <view @click="openPopup">
-      {{currentDate}}
+      
     </view>
 		<calendars @popupSubmit="popupSubmit"></calendars>
 		<view class="">
+			选择时间为：{{currentDate}}
 			<!-- <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" :value="multiIndex" @change="pickerChange"
 				class="picker-view">
 				<picker-view-column>
